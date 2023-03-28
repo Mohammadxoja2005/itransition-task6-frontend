@@ -9,10 +9,13 @@ const LOGIN: FC = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
+    
+    // socket.emit("receive_user_id", {id: 1}) 
 
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
       name: name
-    }).then((res) => {
+    })
+    .then((res) => {
 
       if (res.data != null) {
         localStorage.setItem("userIndex", res.data);
@@ -22,9 +25,8 @@ const LOGIN: FC = () => {
 
       return userIndex;
 
-    }).then((userIndex) => {
-      socket.emit("receive_user_id", {id: userIndex})
     })
+
   }
 
   return (
