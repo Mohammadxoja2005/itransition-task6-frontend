@@ -3,7 +3,8 @@ import { FC } from 'react'
 import MESSAGEFORM from './components/messageform';
 import MESSAGESHOW from './components/messageshow';
 
-const MAIN: FC = () => {
+const MAIN: FC = () => { 
+
     return (
        <> 
        <MESSAGEFORM/>
