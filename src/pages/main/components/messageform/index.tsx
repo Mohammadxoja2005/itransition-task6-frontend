@@ -31,16 +31,6 @@ const MESSAGEFORM: FC = () => {
 
     }, [socket])
 
-    useEffect(() => {
-        // socket.on("user_messages",)
-        // socket.onmessage = async (event: any) => {
-        //     const data = await JSON.parse(event.data)
-        //     console.log("this is data", data);
-        //     // const queryKey = [...data.entity, data.id].filter(Boolean)
-        //     // queryClient.invalidateQueries({ queryKey })
-        // } 
-    }, [])
-
     const onSubmit = (e: any) => {
         e.preventDefault();
 

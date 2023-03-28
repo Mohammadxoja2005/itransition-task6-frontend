@@ -1,11 +1,11 @@
 import { FC, useEffect, useState } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import io from "socket.io-client"; 
+const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
+
 
 const LOGIN: FC = () => {
   const [name, setName] = useState<string>('');
-
-  const navigate = useNavigate();
 
   const onSubmit = (e: any) => {
     e.preventDefault();
@@ -23,13 +23,7 @@ const LOGIN: FC = () => {
       return userIndex;
 
     }).then((userIndex) => {
-      // if (userIndex) {
-      //   setTimeout(() => {
-      //     navigate('/main');
-      //   }, 1000)
-      // } else {
-      //   navigate('/');
-      // }
+      socket.emit("receive_user_id", {id: userIndex})
     })
   }
 
