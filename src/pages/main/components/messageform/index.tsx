@@ -41,13 +41,6 @@ const MESSAGEFORM: FC = () => {
             sender_id: localStorage.getItem("userIndex"),
             receiver_id: receieverInfo?.id
         })
-
-        // axios.post(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
-        //     title: title,
-        //     body: body,
-        //     sender_id: localStorage.getItem("userIndex"),
-        //     receiver_id: receieverInfo?.id
-        // })
     }
 
     const recInfo = (id: number, name: string) => {
