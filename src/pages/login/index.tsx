@@ -1,7 +1,5 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useState } from 'react'
 import axios from "axios";
-import io from "socket.io-client"; 
-const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
 
 
 const LOGIN: FC = () => {
@@ -9,8 +7,6 @@ const LOGIN: FC = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    
-    // socket.emit("receive_user_id", {id: 1}) 
 
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
       name: name
