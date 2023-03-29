@@ -24,7 +24,7 @@ const MESSAGEFORM: FC = () => {
             setAllNames(res.data);
         })
         
-        socket.emit('receive_user_id', {receiver_id: localStorage.getItem("userIndex")}) 
+        socket.emit('receive_user_id', {receiver_id: localStorage.getItem("userIndex")})
         
         socket.on('receive_message', (data) => { 
             setUpdate(data);
@@ -34,7 +34,7 @@ const MESSAGEFORM: FC = () => {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-
+        console.log("clicked");
         socket.emit('send_message', {
             title: title,
             body: body,
