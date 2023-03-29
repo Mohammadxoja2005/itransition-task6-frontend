@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from 'react'
-import axios from "axios";
 import {useAtom} from "jotai";
 import {useUpdate} from "../../../../hooks/useUpdate"; 
 
@@ -13,10 +12,7 @@ interface messagesTypes {
 }
 
 const MESSAGESHOW: FC = () => {
-    const receiver_id = localStorage.getItem("userIndex"); 
     const [update,] = useAtom<any>(useUpdate);
-    const [messages, setMessages] = useState<Array<messagesTypes>>(update); 
-
     return (
         <div className='flex flex-col items-center'>
             {update && update.map((value: any) => {
