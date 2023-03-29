@@ -34,12 +34,12 @@ const MESSAGEFORM: FC = () => {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        console.log("clicked");
+
         socket.emit('send_message', {
             title: title,
             body: body,
             sender_id: localStorage.getItem("userIndex"),
-            receiver_id: receieverInfo?.id
+            receiver_id: receieverInfo?.id,
         })
     }
 
@@ -50,7 +50,6 @@ const MESSAGEFORM: FC = () => {
 
     const setRec = (name: string) => {
         const res = allNames.filter((value) => value.name.includes(name.toLowerCase()));
-        // setReceiverId(res[0]?.id); 
         setPossibleNames(res)
     }
 
@@ -142,12 +141,21 @@ const MESSAGEFORM: FC = () => {
                 </div> */}
                     <button
                         type="submit"
-                        className="w-full rounded bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                        className="w-full mb-6 rounded bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
                         data-te-ripple-init=""
                         data-te-ripple-color="light"
                         onClick={(e) => onSubmit(e)}
                     >
                         Send
+                    </button> 
+                    <button
+                        type="submit"
+                        className="w-full rounded bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                        data-te-ripple-init=""
+                        data-te-ripple-color="light"
+                        onClick={() => localStorage.removeItem('userIndex')}
+                    >
+                        Logout from account
                     </button>
                 </form>
 

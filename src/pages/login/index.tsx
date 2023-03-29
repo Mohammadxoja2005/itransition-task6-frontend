@@ -7,7 +7,10 @@ const LOGIN: FC = () => {
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-
+    if(name == "") {
+      alert("name needs to be filled");
+      return;
+    }
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
       name: name
     })
@@ -22,7 +25,6 @@ const LOGIN: FC = () => {
         return userIndex;
 
       })
-
   }
 
   return (
