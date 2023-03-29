@@ -16,16 +16,6 @@ const MESSAGESHOW: FC = () => {
     const receiver_id = localStorage.getItem("userIndex"); 
     const [update,] = useAtom<any>(useUpdate);
     const [messages, setMessages] = useState<Array<messagesTypes>>(update); 
-    
-    console.log(update);
-
-    // useEffect(() => {
-    //     axios.get(`${process.env.REACT_APP_BACKEND_URL}/messages/${receiver_id}`).then((res) => {
-    //         setMessages(res.data); 
-    //     }) 
-
-    // }, [update])
-
 
     return (
         <div className='flex flex-col items-center'>
