@@ -2,15 +2,6 @@ import { FC, useEffect, useState } from 'react'
 import {useAtom} from "jotai";
 import {useUpdate} from "../../../../hooks/useUpdate"; 
 
-interface messagesTypes {
-    id: number,
-    title: string,
-    body: string,
-    sender_id: number,
-    receiver_id: number,
-    joiner: { id: number, name: string }
-}
-
 const MESSAGESHOW: FC = () => {
     const [update,] = useAtom<any>(useUpdate);
     return (
