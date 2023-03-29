@@ -49,7 +49,7 @@ const MESSAGEFORM: FC = () => {
     }
 
     const setRec = (name: string) => {
-        const res = allNames.filter((value) => value.name.toLowerCase().includes(name));
+        const res = allNames.filter((value) => value.name.includes(name.toLowerCase()));
         // setReceiverId(res[0]?.id); 
         setPossibleNames(res)
     }

@@ -11,17 +11,17 @@ const LOGIN: FC = () => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
       name: name
     })
-    .then((res) => {
+      .then((res) => {
 
-      if (res.data != null) {
-        localStorage.setItem("userIndex", res.data);
-        window.location.reload();
-      }
-      const userIndex = localStorage.getItem('userIndex');
+        if (res.data != null) {
+          localStorage.setItem("userIndex", res.data);
+          window.location.reload();
+        }
+        const userIndex = localStorage.getItem('userIndex');
 
-      return userIndex;
+        return userIndex;
 
-    })
+      })
 
   }
 
