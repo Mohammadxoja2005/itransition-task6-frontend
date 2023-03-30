@@ -5,6 +5,8 @@ const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
 
 const LOGIN: FC = () => {
   const [name, setName] = useState<string>('');
+  
+  console.log(process.env.PORT);
 
   const onSubmit = (e: any) => {
     e.preventDefault();
