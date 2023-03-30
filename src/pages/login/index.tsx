@@ -1,30 +1,43 @@
 import { FC, useState } from 'react'
 import axios from "axios";
-
+import io from "socket.io-client";
+const socket = io(`http://localhost:3005/`);
 
 const LOGIN: FC = () => {
   const [name, setName] = useState<string>('');
 
   const onSubmit = (e: any) => {
     e.preventDefault();
-    if(name == "") {
+    if (name == "") {
       alert("name needs to be filled");
       return;
     }
-    axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
-      name: name
+
+    socket.emit("register_user", { name: name });
+
+    socket.on("get_user_id", (data) => {
+      localStorage.setItem("userIndex", data.id);
+      window.location.reload();
     })
-      .then((res) => {
 
-        if (res.data != null) {
-          localStorage.setItem("userIndex", res.data);
-          window.location.reload();
-        }
-        const userIndex = localStorage.getItem('userIndex');
+    // socket.on("get_all_users", (data) => {
+    //   console.log(data);
+    // })
 
-        return userIndex;
+    // axios.post(`${process.env.REACT_APP_BACKEND_URL}/join`, {
+    //   name: name
+    // })
+    //   .then((res) => {
 
-      })
+    //     if (res.data != null) {
+    //       localStorage.setItem("userIndex", res.data);
+    //       window.location.reload();
+    //     }
+    //     const userIndex = localStorage.getItem('userIndex');
+
+    //     return userIndex;
+
+    //   })
   }
 
   return (

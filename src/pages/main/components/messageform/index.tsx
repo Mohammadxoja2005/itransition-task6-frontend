@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { useAtom } from "jotai";
 import { useUpdate } from "../../../../hooks/useUpdate";
 
-const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
+const socket = io(`http://localhost:3005/`);
 
 interface allNamesInterface {
     id: number,
@@ -20,13 +20,14 @@ const MESSAGEFORM: FC = () => {
     const [update, setUpdate] = useAtom(useUpdate);
 
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BACKEND_URL}/join`).then((res) => {
-            setAllNames(res.data);
+
+        socket.on("get_all_users", (data) => {
+            setAllNames(data);
         })
-        
-        socket.emit('receive_user_id', {receiver_id: localStorage.getItem("userIndex")})
-        
-        socket.on('receive_message', (data) => { 
+
+        socket.emit('receive_user_id', { receiver_id: localStorage.getItem("userIndex") })
+
+        socket.on('receive_message', (data) => {
             setUpdate(data);
         })
 
@@ -147,7 +148,7 @@ const MESSAGEFORM: FC = () => {
                         onClick={(e) => onSubmit(e)}
                     >
                         Send
-                    </button> 
+                    </button>
                     <button
                         type="submit"
                         className="w-full rounded bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
