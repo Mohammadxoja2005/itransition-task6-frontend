@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import { useAtom } from "jotai";
 import { useUpdate } from "../../../../hooks/useUpdate";
 
-const socket = io(`http://localhost:3005/`);
+const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
 
 interface allNamesInterface {
     id: number,

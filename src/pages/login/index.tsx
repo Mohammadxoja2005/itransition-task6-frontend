@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import axios from "axios";
 import io from "socket.io-client";
-const socket = io(`http://localhost:3005/`);
+const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
 
 const LOGIN: FC = () => {
   const [name, setName] = useState<string>('');
